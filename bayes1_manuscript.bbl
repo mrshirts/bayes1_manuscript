@@ -1,0 +1,142 @@
+\begin{thebibliography}{10}
+
+\bibitem{ffcomp1}
+O.~F. Lange, D.~van~der Spoel, and B.~L. de~Groot, ``Scrutinizing {Molecular}
+  {Mechanics} {Force} {Fields} on the {Submicrosecond} {Timescale} with {NMR}
+  {Data},'' {\em Biophys J}, vol.~99, pp.~647--655, July 2010.
+
+\bibitem{ffcomp2}
+F.~Mart{\'i}n-Garc{\'i}a, E.~Papaleo, P.~Gomez-Puertas, W.~Boomsma, and
+  K.~Lindorff-Larsen, ``Comparing {Molecular} {Dynamics} {Force} {Fields} in
+  the {Essential} {Subspace},'' {\em PLoS One}, vol.~10, Mar. 2015.
+
+\bibitem{ewen_comparison_2016}
+J.~P. Ewen, C.~Gattinoni, F.~M. Thakkar, N.~Morgan, H.~A. Spikes, and D.~Dini,
+  ``A {Comparison} of {Classical} {Force}-{Fields} for {Molecular} {Dynamics}
+  {Simulations} of {Lubricants},'' {\em Materials}, vol.~9, p.~651, Aug. 2016.
+
+\bibitem{petrov_are_2014}
+D.~Petrov and B.~Zagrovic, ``Are {Current} {Atomistic} {Force} {Fields}
+  {Accurate} {Enough} to {Study} {Proteins} in {Crowded} {Environments}?,''
+  {\em PLOS Computational Biology}, vol.~10, p.~e1003638, May 2014.
+
+\bibitem{guvench_comparison_2008}
+O.~Guvench and A.~D. MacKerell, ``Comparison of protein force fields for
+  molecular dynamics simulations,'' {\em Methods Mol. Biol.}, vol.~443,
+  pp.~63--88, 2008.
+
+\bibitem{parm94}
+W.~D. Cornell, P.~Cieplak, C.~I. Bayly, I.~R. Gould, K.~M. Merz, D.~M.
+  Ferguson, D.~C. Spellmeyer, T.~Fox, J.~W. Caldwell, and P.~A. Kollman, ``A
+  {Second} {Generation} {Force} {Field} for the {Simulation} of {Proteins},
+  {Nucleic} {Acids}, and {Organic} {Molecules},'' {\em J. Am. Chem. Soc.},
+  vol.~117, pp.~5179--5197, May 1995.
+
+\bibitem{tip3p}
+W.~L. Jorgensen, J.~Chandrasekhar, and J.~D. Madura, ``Comparison of simple
+  potential functions for simulating liquid water,'' {\em The Journal of
+  Chemical Physics}, vol.~79, pp.~926--935, July 1983.
+
+\bibitem{tip4pew}
+H.~W. Horn, W.~C. Swope, J.~W. Pitera, J.~D. Madura, T.~J. Dick, G.~L. Hura,
+  and T.~Head-Gordon, ``Development of an improved four-site water model for
+  biomolecular simulations: {TIP}4p-{Ew},'' {\em The Journal of Chemical
+  Physics}, vol.~120, pp.~9665--9678, May 2004.
+
+\bibitem{burger}
+S.~K. Burger and G.~A. Cisneros, ``Efficient optimization of van der {Waals}
+  parameters from bulk properties,'' {\em J Comput Chem}, vol.~34,
+  pp.~2313--2319, Oct. 2013.
+
+\bibitem{law}
+M.~M. Law and J.~M. Hutson, ``I-nolls: A program for interactive nonlinear
+  least-squares fitting of the parameters of physical models,'' {\em Computer
+  Physics Communications}, vol.~102, no.~1, pp.~252 -- 268, 1997.
+
+\bibitem{combined}
+I.~J. Chen, D.~Yin, and A.~D. MacKerell, ``Combined ab initio/empirical
+  approach for optimization of {Lennard}-{Jones} parameters for polar-neutral
+  compounds,'' {\em J Comput Chem}, vol.~23, pp.~199--213, Jan. 2002.
+
+\bibitem{rational}
+D.~Horinek, S.~I. Mamatkulov, and R.~R. Netz, ``Rational design of ion force
+  fields based on thermodynamic solvation properties,'' {\em The Journal of
+  Chemical Physics}, vol.~130, p.~124507, Mar. 2009.
+
+\bibitem{aipar}
+M.~Z. Hernandes and R.~L. Longo, ``{AIPAR}: ab initio parametrization of
+  intermolecular potentials for computer simulations,'' {\em J Mol Model},
+  vol.~11, pp.~61--68, Feb. 2005.
+
+\bibitem{FB1}
+L.-P. Wang, T.~J. Martinez, and V.~S. Pande, ``Building {Force} {Fields}: {An}
+  {Automatic}, {Systematic}, and {Reproducible} {Approach},'' {\em J. Phys.
+  Chem. Lett.}, vol.~5, pp.~1885--1891, June 2014.
+
+\bibitem{FB2}
+L.-P. Wang, T.~Head-Gordon, J.~W. Ponder, P.~Ren, J.~D. Chodera, P.~K. Eastman,
+  T.~J. Martinez, and V.~S. Pande, ``Systematic {Improvement} of a {Classical}
+  {Molecular} {Model} of {Water},'' {\em J. Phys. Chem. B}, vol.~117,
+  pp.~9956--9972, Aug. 2013.
+
+\bibitem{FB3}
+L.-P. Wang, J.~Chen, and T.~Van~Voorhis, ``Systematic {Parametrization} of
+  {Polarizable} {Force} {Fields} from {Quantum} {Chemistry} {Data},'' {\em J.
+  Chem. Theory Comput.}, vol.~9, pp.~452--460, Jan. 2013.
+
+\bibitem{unchanged}
+J.~W. Ponder and D.~A. Case, ``Force fields for protein simulations,'' {\em
+  Adv. Protein Chem.}, vol.~66, pp.~27--85, 2003.
+
+\bibitem{monticelli}
+L.~Monticelli and D.~P. Tieleman, ``Force fields for classical molecular
+  dynamics,'' {\em Methods Mol. Biol.}, vol.~924, pp.~197--213, 2013.
+
+\bibitem{bayes1}
+K.~Farrell, J.~T. Oden, and D.~Faghihi, ``A {Bayesian} framework for adaptive
+  selection, calibration, and validation of coarse-grained models of atomistic
+  systems,'' {\em Journal of Computational Physics}, vol.~295, pp.~189--208,
+  Aug. 2015.
+
+\bibitem{bayes2}
+K.~Klein, S.~Hennig, and S.~K. Paul, ``A {Bayesian} {Modelling} {Approach} with
+  {Balancing} {Informative} {Prior} for {Analysing} {Imbalanced} {Data},'' {\em
+  PLOS ONE}, vol.~11, p.~e0152700, Apr. 2016.
+
+\bibitem{bayes3}
+S.~Wu, P.~Angelikopoulos, C.~Papadimitriou, R.~Moser, and P.~Koumoutsakos, ``A
+  hierarchical {Bayesian} framework for force field selection in molecular
+  dynamics simulations,'' {\em Phil. Trans. R. Soc. A}, vol.~374, p.~20150032,
+  Feb. 2016.
+
+\bibitem{bayes4}
+P.~Angelikopoulos, C.~Papadimitriou, and P.~Koumoutsakos, ``Bayesian
+  uncertainty quantification and propagation in molecular dynamics simulations:
+  {A} high performance computing framework,'' {\em The Journal of Chemical
+  Physics}, vol.~137, p.~144103, Oct. 2012.
+
+\bibitem{bayes5}
+J.~Zhu, J.~Chen, W.~Hu, and B.~Zhang, ``Big {Learning} with {Bayesian}
+  {Methods},'' {\em arXiv:1411.6370 [cs, stat]}, Nov. 2014.
+\newblock arXiv: 1411.6370.
+
+\bibitem{bayes6}
+F.~Cailliez, A.~Bourasseau, and P.~Pernot, ``Calibration of forcefields for
+  molecular simulation: {Sequential} design of computer experiments for
+  building cost-efficient kriging metamodels,'' {\em J. Comput. Chem.},
+  vol.~35, pp.~130--149, Jan. 2014.
+
+\bibitem{bayes7}
+J.~S. Liu, {\em Monte {Carlo} {Strategies} in {Scientific} {Computing}}.
+\newblock Springer, 2001.
+
+\bibitem{bayes8}
+G.~E. Box and G.~C. Tiao, {\em Bayesian Inference in Statistical Analysis}.
+\newblock John Wiley & Sons, Inc., 1992.
+
+\bibitem{smirff}
+``{SMIRFF} forcefield github repository.''
+  \url{https://github.com/open-forcefield-group/smarty}.
+\newblock Accessed: 2017-03-09.
+
+\end{thebibliography}

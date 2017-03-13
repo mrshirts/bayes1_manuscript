@@ -15,11 +15,18 @@
 \usepackage{float}
 \usepackage{hyphenat}
 \usepackage{color} 
+\usepackage{fancyhdr}
+ 
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Share\LaTeX}
+\lhead{Guides and tutorials}
+\rfoot{Page \thepage}
 
 \newcommand{\cov}[1] {\mathrm{cov}\left( #1 \right)}
 \newcommand{\var}[1] {\mathrm{var}\left( #1 \right)}
 
-\pagestyle{empty}
+
 \title{Outline: Bayesian sampling driven classical mechanics force field parameterization}
 \author{Bryce C. Manubay}
 \date{\today}
@@ -55,7 +62,7 @@
             changing the entire force field}
       \begin{outline}
         \item{Forcefield parameters are inherently coupled by nature of how they are designed (sometimes weakly, sometimes strongly)}
-        \item{Chemically/physically interactions and geometries at an atomic scale are coupled}
+        \item{Chemically/physically, interactions and geometries at an atomic scale are coupled}
         \item{You often need to adjust all (or many) parameters if you adjust one}
         \item{Could be a lot, could be a little. Situations vary depending on how the changing interactions affect the overall system}
       \end{outline}
@@ -152,7 +159,27 @@
       \begin{outline} 
         \item{Forward models have already been determined and are simple (how do we calculate bond lengths and angles from a time series of coordinates?)}
         \begin{outline}
-          \item{Still need to write these out explicitly}
+          \item{Bond Length}
+          \begin{outline}
+            \item{$r_{i,j} = \sqrt{\left(\bar{x}_i - \bar{x}_j\right)^2}$}
+            \item{where $r_{i,j}$ is the bond length between atoms i and j and $\bar{x}_i$ are the atomic coordinates of atom i}
+          \end{outline}
+          \item{Bond Angle}
+          \begin{outline}
+            \item{$\dot{x}_{i,j,k} = \left(\bar{x}_i - \bar{x}_j\right) \cdot \left(\bar{x}_j - \bar{x}_k\right)$
+            \item{$\theta_{i,j,k} = \arccos \frac{\dot{x}_{i,j,k}}{r_{i,j} \cdot r_{j,k}}$}
+            \item{where $\theta_{i,j,k}$ is the angle between bonded atoms i,j and k}
+          \end{outline}
+          \item{Torsion Angle}
+          \begin{outline}
+            \item{$\hat{x}_{i,j} = \frac{\left(\bar{x}_i - \bar{x}_j\right)}{\sqrt{\left(\bar{x}_i - \bar{x}_j\right)^2}}$}
+            \item{$n_{i,j,k} = \hat{x}_{i,j} \times \hat{x}_{j,k}$}
+            \item{$m = n_k \times \hat{x}_{i,j}$}
+            \item{$y = n_{i,j,k} \cdot n_{j,k,l}$}
+            \item{$z = m \cdot n_{j,k,l}$}
+            \item{$\phi_{i,j,k,l} = \arctan \frac{y}{z}$}
+            \item{where $\phi_{i,j,k,l}$ is the torsion angle formed by atoms i,j,k and l}
+          \end{outline}
         \end{outline}
         \item{There are a few possible options for choices of likelihood functions}
         \begin{outline}

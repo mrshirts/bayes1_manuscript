@@ -14,12 +14,20 @@
 \usepackage{multirow}
 \usepackage{float}
 \usepackage{hyphenat}
-\usepackage{color} 
+\usepackage{color}
+\usepackage{fancyhdr}
+ 
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{OpenFF Group}
+\lhead{Bayesian Parameterization Nomenclature}
+\rfoot{Page \thepage}
+ 
 
 \newcommand{\cov}[1] {\mathrm{cov}\left( #1 \right)}
 \newcommand{\var}[1] {\mathrm{var}\left( #1 \right)}
 
-\pagestyle{empty}
+
 \title{Nomenclature for Bayesian sampling driven classical mechanics force field parameterization paper}
 \author{Bryce C. Manubay}
 \date{\today}
@@ -130,7 +138,7 @@
       \begin{outline}
         \item{Bonds:}
           \begin{outline}
-            \item{$k_{bond}$: the bonded force constant $\left(\frac{kcal}{mol \cdot \AA^2} \right)$}
+            \item{$k_{B}$: the bonded force constant $\left(\frac{kcal}{mol \cdot \AA^2} \right)$}
             \item{$x_0$: the equilibrium bond length $\left(\AA \right)$}
           \end{outline}
         \item{Angles:}
@@ -150,18 +158,19 @@
       \begin{outline}
         \item{Bonds:}
           \begin{outline}
-            \item{$\mu_{bond}$: mean bond length of a bond distribution $\left(\AA \right)$}
-            \item{$\sigma_{bond}^2$: variance in bond length of a bond distribution $\left(\AA^2 \right)$}
+            \item{$\mu_{B}$: mean bond length of a bond distribution $\left(\AA \right)$}
+            \item{$\sigma_{B}^2$: variance in bond length of a bond distribution $\left(\AA^2 \right)$}
           \end{outline}
         \item{Angles:}
           \begin{outline}
-            \item{$\mu_{angle}$: mean bond angle of an angle distribution $\left(rad \right)$}
-            \item{$\sigma_{angle}^2$: variance in bond angle of an angle distribution $\left(rad^2 \right)$}
+            \item{$\mu_{\theta}$: mean bond angle of an angle distribution $\left(rad \right)$}
+            \item{$\sigma_{\theta}^2$: variance in bond angle of an angle distribution $\left(rad^2 \right)$}
           \end{outline}
         \item{Torsions:}
           \begin{outline}
             \item{$A_{\mathit{i}}$: Fourier coefficient of the $i^{th}$ term}
             \item{$\psi_{\mathit{i}}$: phase angle of the $i^{th}$ term} 
+            \item{$\P_{\mathit{i}}$: periodicity of the $i^{th}$ term}
           \end{outline}
       \end{outline}
     \end{outline}   
