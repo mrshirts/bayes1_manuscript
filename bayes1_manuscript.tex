@@ -19,8 +19,8 @@
  
 \pagestyle{fancy}
 \fancyhf{}
-\rhead{Share\LaTeX}
-\lhead{Guides and tutorials}
+\rhead{OpenFF Group}
+\lhead{Bayesian Inference Parameterization Manuscript Outline}
 \rfoot{Page \thepage}
 
 \newcommand{\cov}[1] {\mathrm{cov}\left( #1 \right)}
@@ -128,18 +128,28 @@
       \begin{outline}
         \item{Bonds and Angles:}
         \begin{outline}
-          \item{Mean bond lengths and angles}
-          \item{Variance of bond lengths and angles}
+          \item{It is well known that simulated bond and angle frequency distributions can be well described by simple gaussian distributions}
+          \item{We therefore choose observables to be simple parameters of the gaussian distribution}
+          \begin{outline}
+            \item{Mean bond lengths and angles}
+            \item{Variance of bond lengths and angles}
+          \end{outline}
         \end{outline}
         \item{Torsions:}
         \begin{outline}
-          \item{Fourier series coefficients and/or some measure of fitness to a fourier series model}
+          \item{Torsion distributions are generally more difficult to describe than bonds and angles}
+          \item{Additionally, distributions are often multimodal and may not have constant period between modes}
+          \item{Hence, we choose to describe torsion distributions as fourier series expansions of the form:}
+          \begin{outline}
+            \item{$f_{N}\left(x\right) = \sum_{i=0}^N A_i \sin^2\left(\frac{2 i \pi x}{\tau_i} + \psi_i \right)$}
+            \item{Fourier series coefficients, phase angles, and periodicities will be the observables used to describe the distributions}
+          \end{outline}
         \end{outline}
       \end{outline}
       \item{Bayes' Theorem}
       \begin{outline}
-        \item{Simple version: $Pr\left(\theta|O\right) = \frac{Pr\left(O|\theta\right)Pr\left(\theta\right)}{Pr\left(B\right)}$}
-        \item{Where $Pr\left(\right)$ is a probability function and $\theta$ are parameters for a model estimating our observed data $O$}
+        \item{Simple version: $Pr\left(\Theta|O\right) = \frac{Pr\left(O|\Theta\right)Pr\left(\Theta\right)}{Pr\left(B\right)}$}
+        \item{Where $Pr\left(\right)$ is a probability function and $\Theta$ are parameters for a model estimating our observed data $O$}
       \end{outline}
       \item{Prior probability models}
       \begin{outline}
@@ -183,11 +193,11 @@
         \end{outline}
         \item{There are a few possible options for choices of likelihood functions}
         \begin{outline}
-          \item{$L\left(O|\theta\right) = \frac{1}{\sqrt{2\pi\sigma_O^2}} \cdot \exp\left(-\frac{\left(\bar{O} - O_{mod}\left(\theta\right)\right)^2}{2
+          \item{$L\left(O|\Theta\right) = \frac{1}{\sqrt{2\pi\sigma_O^2}} \cdot \exp\left(-\frac{\left(\bar{O} - O_{mod}\left(\Theta\right)\right)^2}{2
                    \sigma_O^2}\right)$}
-          \item{$L\left(O|\theta\right) = \prod_{j=1}^M \frac{1}{\sqrt{2\pi\sigma_O^2}} \cdot \exp\left(-\frac{\left(O_j - O_{mod}\left(\theta\right)
+          \item{$L\left(O|\Theta\right) = \prod_{j=1}^M \frac{1}{\sqrt{2\pi\sigma_O^2}} \cdot \exp\left(-\frac{\left(O_j - O_{mod}\left(\Theta\right)
                   \right)^2}{2\sigma_O^2}\right)$}
-          \item{$L\left(O|\theta\right) = \exp\left(-\frac{\frac{1}{M} \sum_{j=1}^M \left(O_{mod}\left(\theta\right) - O_j\right)^2}{2\sigma_O^2}\right)$}
+          \item{$L\left(O|\Theta\right) = \exp\left(-\frac{\frac{1}{M} \sum_{j=1}^M \left(O_{mod}\left(\Theta\right) - O_j\right)^2}{2\sigma_O^2}\right)$}
         \end{outline}
       \end{outline}
       \item{Sampling and choice of surrogate model}
