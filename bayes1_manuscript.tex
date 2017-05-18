@@ -223,12 +223,48 @@
           \item{Able to describe parameters of estimated distribution when there is significant configurational overlap with the original}
         \end{outline}
         \item{Utilized in the same way surrogate modeling would be, but less efficient (we think)}
-        \item{Preliminary results have shown that reweighting with MBAR is accurate within conservative changes of $5\%$ in bonded force constant and $3\%$
+        \item{Preliminary results have shown that reweighting with MBAR is accurate within conservative changes of $3\%$ in bonded force constant and $2\%$
                 change in minimum bond length. Thus, each move during posterior construction will end in a new simulation on that cusp to generate new 
                 evidence before the next reweighting move.}
       \end{outline}
+      \item{Proposing new parameter states and MCMC acceptance criteria}
+      \begin{outline}
+        \item{Every iteration of the MCMC sampling procedure a new set of parameters are proposed based on the current state and a prescribed proposal width.
+              Right now that is done by randomly sampling from a normal distribution where the current parameter value is the average and the proposal width is
+              the standard deviation of the normal distribution}
+        \item{During a single iteration of the sampling loop we calculate the likelihood and prior probabilities of both the current and the proposed parameter
+              states. The acceptance probability ($p_{accept}$) is the ratio of the proposal probability to the current probability ($\frac{L_{current} 
+              Pr_{current}}{L_{proposal} Pr_{proposal}}$). If the acceptance probability is greater than a random sample generated on $Uniform\left(0,1\right)$
+              then we accept the proposed state and update our position (i.e. the proposed state becomes the current state). A new iteration now begins.
+        \item{If the acceptance criteria are not met then the current state is retained, a new move is proposed  and the cycle is repeated.}
+      \end{outline} 
+      \item{Proposed MCMC sampling algorithm and experiments}
+      \begin{outline}
+        \item{\textit{Hypothesis:} The speed of convergence of the sampling is affected by the order and frequency by which surrogate modelling and MBAR are 
+              utiilized to predict observable quantities in place of classical mechanics simulations.} 
+        \begin{outline}
+          \item{\textbf{Step 1:} Simulate with an altered force field prescribed by the initial parameter states which are an input to the sampler function or 
+                those proposed by the last step of the sampler.}
+          \item{\textbf{Step 2:} Calculate the observables associated with the parameters being changed (bond length average and variance for bonded parameter 
+                types, bond angle average and variance for angle parameter types, etc.)}
+          \item{\textbf{Step 3:} Several options are possible in step 3, in order to test our hypothesis}
+          \begin{outline}
+            \item{\textbf{3a:} Use MBAR to conservatively extend our knowledge of the observables in local parameter space. From this we can construct 
+                  surrogate models for the observables and carry out MCMC sampling on the surrogate models. Once the sampling has converged (which can be
+                  heuristically determined by examining the previous few MCMC samples), carry out a new simulation at that final state.}
+            \item{\textbf{3b:} Repeat steps 1 and 2 N more times (prescribed parameter states determined by MCMC acceptance criteria) and then use those N+1
+                  simulations to construct surrogate models for our observables. Carry out MCMC sampling on the surrogate models. Once the sampling has 
+                  converged, carry out a new simulation at that final state.}
+            \item{\textbf{3c:} Same as 3b, but without the use of MBAR.}
+          \end{outline} 
+          \item{\textbf{Step 4:} Carry out a new simulation with parameters prescribed by a new proposed MCMC move and calculate the observables associated 
+                with the parameters being changed. If the calculated observables are statistically the same as those from the previous parameter state then
+                the sampling has fully converged and the final parameters have been determined. Else, go back to step 1.} 
+        \end{outline} 
+      \end{outline}   
     \end{outline}
   \end{outline}
+      
   \item{Results and Analyses}
   \begin{outline}
     \item{Ideas for deliverables/presentation of results:}
