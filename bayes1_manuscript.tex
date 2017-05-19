@@ -232,26 +232,37 @@
         \item{Every iteration of the MCMC sampling procedure a new set of parameters are proposed based on the current state and a prescribed proposal width.
               Right now that is done by randomly sampling from a normal distribution where the current parameter value is the average and the proposal width is
               the standard deviation of the normal distribution}
+%MRS: which normal distribution?  Do you mean this is a user-defined parameter?  I think in this case, once we have O(theta), then any reasonable strategy is fine.  If we were doing the sampling with direct simulation, we would want as accurate as possible, but for the surrogate model, pretty much anything would work.
         \item{During a single iteration of the sampling loop we calculate the likelihood and prior probabilities of both the current and the proposed parameter
+%MRS: can you define ``the sampling loop'' here? (perhaps referring to a specific outline bullet point?)
               states. The acceptance probability ($p_{accept}$) is the ratio of the proposal probability to the current probability ($\frac{L_{current} 
               Pr_{current}}{L_{proposal} Pr_{proposal}}$). If the acceptance probability is greater than a random sample generated on $Uniform\left(0,1\right)$
               then we accept the proposed state and update our position (i.e. the proposed state becomes the current state). A new iteration now begins.
         \item{If the acceptance criteria are not met then the current state is retained, a new move is proposed  and the cycle is repeated.}
+%MRS: hmm.  are you just defining metropolis MC (with Gaussian probability definitions?)
       \end{outline} 
       \item{Proposed MCMC sampling algorithm and experiments}
       \begin{outline}
-        \item{\textit{Hypothesis:} The speed of convergence of the sampling is affected by the order and frequency by which surrogate modelling and MBAR are 
-              utiilized to predict observable quantities in place of classical mechanics simulations.} 
+        \item{\textit{Hypothesis:} The speed of convergence of the sampling is affected by the order and frequency by which surrogate modelling and MBAR are utilized to predict observable quantities in place of classical mechanics simulations.} 
         \begin{outline}
           \item{\textbf{Step 1:} Simulate with an altered force field prescribed by the initial parameter states which are an input to the sampler function or 
                 those proposed by the last step of the sampler.}
+%MRS: agreed.
           \item{\textbf{Step 2:} Calculate the observables associated with the parameters being changed (bond length average and variance for bonded parameter 
                 types, bond angle average and variance for angle parameter types, etc.)}
+%MRS: agreed.
           \item{\textbf{Step 3:} Several options are possible in step 3, in order to test our hypothesis}
+%MRS: Important that this is not the main hypothesis, but a subsidiary one.  We basically have three flavors of sampling: direct sampling, MBAR, and surrogate models -- with a number of parameters for each. for MBAR, we have ``how far out in each parameter is reasonable to go''? For surrogate models, we have a gigantic family of models to choose from (which we have to sort out - eventually, though we really only need to find one that works)
           \begin{outline}
-            \item{\textbf{3a:} Use MBAR to conservatively extend our knowledge of the observables in local parameter space. From this we can construct 
-                  surrogate models for the observables and carry out MCMC sampling on the surrogate models. Once the sampling has converged (which can be
+            \item{\textbf{3a:} Use MBAR to conservatively extend our knowledge of the observables in local parameter space. From this 
+%MRS: more specifically, from this local knowledge of O(\theta)
+we can construct 
+                  surrogate models for the observables and carry out MCMC sampling on the surrogate models. 
+%MRS: well MCMC sampling to perform bayesian inference using the surrogate models as the data forward map.
+Once the sampling has converged (which can be
                   heuristically determined by examining the previous few MCMC samples), carry out a new simulation at that final state.}
+%MRS: probably not just previous 'few' MCMC samples, since we need to know the distribution is converging.
+%MRS: below -- can you be a bit moe detailed on 3b and 3c?  Try to make it clear enough so that someone who was knowledgeable about the area but wasn't in our conversations (say David Mobley) could actually carry out the process.
             \item{\textbf{3b:} Repeat steps 1 and 2 N more times (prescribed parameter states determined by MCMC acceptance criteria) and then use those N+1
                   simulations to construct surrogate models for our observables. Carry out MCMC sampling on the surrogate models. Once the sampling has 
                   converged, carry out a new simulation at that final state.}
