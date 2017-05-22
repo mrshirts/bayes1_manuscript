@@ -230,6 +230,7 @@
       \item{Proposing new parameter states and MCMC acceptance criteria}
       \begin{outline}
         \item{Every iteration of the MCMC sampling procedure, a new set of parameters are proposed based on the current state and a prescribed proposal width.
+%MRS2: more precisely, a proposal distribution, which could be anything (normal distribution is typical, but not required).  Look at the math on Metropolis-Hasting Monte Carlo.
               Right now that is done by randomly sampling from a normal distribution where the current parameter value is the average and the proposal width is
               the standard deviation of the normal distribution}
 %MRS: which normal distribution?  Do you mean this is a user-defined parameter?  I think in this case, once we have O(theta), then any reasonable strategy is fine.  If we were doing the sampling with direct simulation, we would want as accurate as possible, but for the surrogate model, pretty much anything would work.
@@ -245,24 +246,27 @@
         \item{If the acceptance criteria are not met then the current state is retained, a new move is proposed  and the cycle is repeated.}
 %MRS: hmm.  are you just defining metropolis MC (with Gaussian probability definitions?)
 %BCM: Yes.
+%MRS2: OK, make it clear you're just rehashing standard algorithms, and not proposing something new.
       \end{outline}
       \item{Proposed MCMC sampling algorithm and experiments}
       \begin{outline}
         \item{\textit{Hypothesis:} The speed of convergence of the sampling is affected by the order and frequency by which surrogate modelling and MBAR are utilized to predict observable quantities in place of 
                                    classical mechanics simulations.}
         \begin{outline}
+%MRS2: probably should just say ``initial'' instead of ''altered'' since there otherwise there isn't context as to what the first one was.           
           \item{\textbf{Step 1:} Simulate with an altered force field prescribed by the initial parameter states which are an input to the sampler function or
                 those proposed by the last step of the sampler.}
 %MRS: agreed.
-          \item{\textbf{Step 2:} Calculate the observables associated with the parameters being changed (bond length average and variance for bonded parameter
-                types, bond angle average and variance for angle parameter types, etc.)}
+          \item{\textbf{Step 2:} Calculate the observables associated with the parameters being changed (bond length average and variance for bonded parameter types, bond angle average and variance for angle parameter types, etc.)}
 %MRS: agreed.
+%MRS2: actually, for clarification, any observable might be affected, so you dont need to say ``associated with the parameters being changed'', since, for example, changing the bond lengths could affect the angles (by pulling atoms closer together), so all observables might change when any parameter is changed, even if not directly associated.  In this case, bonds and angles are pretty much decoupled, so we could kind of say that some observables are associated with certain parameters, but that's just a special case. 
           \item{\textbf{Step 3:} Several options are possible in step 3, in order to test one of our secondary hypotheses}
 %MRS: Important that this is not the main hypothesis, but a subsidiary one.  We basically have three flavors of sampling: direct sampling, MBAR, and surrogate models -- with a number of parameters for each. for MBAR, we have ``how far out in each parameter is reasonable to go''? For surrogate models, we have a gigantic family of models to choose from (which we have to sort out - eventually, though we really only need to find one that works)
 %BCM: Noted. I'll add a hypothesis about "how far in MBAR moves is reasonable/produces accurate observable estimates
           \begin{outline}
+%MRS2: make this a little more concise.  Because it's pretty long, it's hard to see the difference in a, b, and c.  Maybe just emphasize the differences.   I had to read through a couple of times to make sure. 
             \item{\textbf{3a:} Use MBAR to conservatively extend our knowledge of the observables in local parameter space. From this local knowledge of $O\left(\Theta\right)$ we can construct
-                  surrogate models for the observables and carry out MCMC sampling to perform bayesian inference using the surrogate models as forward data models. Once the sampling has converged (which can be
+                  surrogate models for the observables and carry out MCMC sampling to perform Bayesian inference using the surrogate models as forward data models. Once the sampling has converged (which can be
                   heuristically determined by examining the previous $N$ MCMC samples), carry out a new simulation at that final state.}
 %MRS: probably not just previous 'few' MCMC samples, since we need to know the distribution is converging.
 %BCM: Maybe I'll propose some 'burnin' length and just use all of the samples after that
@@ -275,6 +279,7 @@
                                From this local knowledge of $O\left(\Theta\right)$ we can construct surrogate models for the observables and carry out MCMC sampling to perform bayesian inference using 
                                the surrogate models as forward data models. Once the sampling has converged, carry out a new simulation at that final state.This is the same as 3b, but without the use of MBAR.}
           \end{outline}
+%MRS2: ``carry out a new simulation'' occurs both in steps 3, and step 4?
           \item{\textbf{Step 4:} Carry out a new simulation with parameters prescribed by a new proposed MCMC move and calculate the observables associated
                 with the parameters being changed. If the calculated observables are statistically the same as those from the previous parameter state then
                 the sampling has fully converged and the final parameters have been determined. Else, go back to step 1.}
